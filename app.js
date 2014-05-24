@@ -68,7 +68,6 @@ function populateStages(){
 				// Make sure that team isn't already in that match
 				if(loserDestination.find('[data-team="'+loser+'"]').length < 1){ 
 					loserDestination = loserDestination.find('.empty').eq(0);
-					console.log(loserDestination);
 					loserDestination.text(teams[loser].name);	
 					loserDestination.removeClass('empty');
 					loserDestination.attr('data-team', loser);						
@@ -98,6 +97,11 @@ function serializeSelections(){
 	return selections;
 }
 
+function saveToLocalStorage(){
+	var data = serializeSelections();
+	localStorage.data = JSON.stringify(data);
+}
+
 // Group stage selection logic
 $('.group .team').on('click', function(){
 	// Check if it is already selected
@@ -113,6 +117,7 @@ $('.group .team').on('click', function(){
 		}			
 	}
 	populateStages();
+	saveToLocalStorage();
 });
 
 // Knockout stage selection logic
@@ -124,10 +129,38 @@ $('.match .team').on('click', function(){
 		laterStages = $('.stage').filter(function(){
 			return parseInt($(this).attr('data-stage'))< thisStage;
 		});
-		console.log(thisStage, laterStages);
 		laterStages.find('.match [data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').text('');
 	} else if(!$(this).hasClass('empty') && $(this).siblings('.selected').length<1){
 		$(this).addClass('selected');
 	}
 	populateStages();
+	saveToLocalStorage();
 });
+
+function clearStorage(){
+	localStorage.data = undefined;
+}
+
+function loadLocalStorage(data){
+	data = JSON.parse(data);
+	for (var group in data.groups){
+		if (data.groups.hasOwnProperty(group)){
+			$('[data-stage="groups"] [data-team="'+data.groups[group]['winner']+'"]').click();
+			$('[data-stage="groups"] [data-team="'+data.groups[group]['runner-up']+'"]').click();
+		}
+	}
+
+	function clickStage(num, callback){
+		for(var match in data[num]){
+			$('[data-stage="'+num+'"] [data-team="'+data[num][match]+'"]').click();
+		}
+	}
+
+	clickStage(16);
+	clickStage(8);
+	clickStage(4);
+	clickStage(3);
+	clickStage(2);
+};
+
+if (!(localStorage.data == undefined)) loadLocalStorage(localStorage.data);
