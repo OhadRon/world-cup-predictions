@@ -17,10 +17,8 @@ function populateGroups(){
 }
 
 function testing(){
-	$('.group .team').each(function(index){
-		
+	$('.group .team').each(function(index){		
 			$(this).click();
-
 	});
 	$('.team').each(function(){
 		$(this).click();

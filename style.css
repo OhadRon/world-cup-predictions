@@ -19,7 +19,6 @@ h1 {
     text-align: center;
     font-size: 25px; }
   .stage > .match, .stage .group {
-    width: 180px;
     display: inline-block;
     margin: 20px; }
     .stage > .match .description, .stage .group .description {
@@ -32,11 +31,12 @@ h1 {
       padding: 8px;
       color: #fff;
       text-align: left;
-      cursor: pointer; }
+      cursor: pointer;
+      transition: 0.2s; }
       .stage > .match .team.selected, .stage .group .team.selected {
-        background-color: #a75658; }
+        background-color: #359a40; }
       .stage > .match .team.runner-up, .stage .group .team.runner-up {
-        background-color: #969344; }
+        background-color: #5c8a5f; }
     .stage > .match .title, .stage .group .title {
       font-weight: bold;
       margin-bottom: 4px;
@@ -45,4 +45,5 @@ h1 {
 #footer {
   text-align: center;
   font-size: 12px;
+  margin-top: 20px;
   margin-bottom: 30px; }

@@ -26,7 +26,6 @@ h1{
 
 	&>.match, & .group{
 		
-		width: 180px;
 		display: inline-block;
 		margin: 20px;
 		
@@ -43,13 +42,14 @@ h1{
 			color: #fff;
 			text-align: left;
 			cursor: pointer;
+			transition: 0.2s;
 
 			&.selected{
-				background-color: #a75658;
+				background-color: #359a40;
 			}
 
 			&.runner-up{
-				background-color: #969344;
+				background-color: #5c8a5f;
 			}
 		}
 
@@ -64,5 +64,6 @@ h1{
 #footer{
 	text-align: center;
 	font-size: 12px;
+	margin-top: 20px;
 	margin-bottom: 30px;
 }
