@@ -137,6 +137,10 @@ $('.match .team').on('click', function(){
 	saveToLocalStorage();
 });
 
+$('#clearAll').on('click',function(){
+	$('.stage[data-stage="groups"]').find('.selected, .runner-up').click();
+});
+
 function clearStorage(){
 	localStorage.data = undefined;
 }
