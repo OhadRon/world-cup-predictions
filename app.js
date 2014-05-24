@@ -1,21 +1,6 @@
 
 var teams = JSON.parse(data.teams);
 
-$('.group').each(function(){
-	var groupName = $(this).attr('data-group');
-	$(this).find('.title').text('Group '+groupName);
-});
-
-function populateGroups(){
-	for(var i=1; i<33; i++){
-		var team = teams[i];
-		var newDiv = $('<div>').addClass('team');
-		$('.group[data-group="'+team.group+'"]').append(newDiv);
-		newDiv.text(team.name);
-		newDiv.attr('data-team',i);
-	}
-}
-
 function testing(){
 	$('.group .team').each(function(index){		
 			$(this).click();
@@ -29,7 +14,6 @@ function populateStages(){
 	$('.group').each(function(){ // From groups to 16th
 		var winner = $(this).find('.selected').attr('data-team');
 		var runnerUp = $(this).find('.runner-up').attr('data-team');
-
 		var winnerDestination = $(this).attr('data-winner').split('.');
 		var runnerUpDestination = $(this).attr('data-runnerup').split('.');
 
@@ -96,10 +80,14 @@ function populateStages(){
 	});
 }
 
-populateGroups();
 // Group stage selection logic
 $('.group .team').on('click', function(){
-	if($(this).siblings('.selected,.runner-up').length<2){
+	// Check if it is already selected
+	if($(this).hasClass('selected') || $(this).hasClass('runner-up')){
+		$(this).removeClass('selected').removeClass('runner-up');
+
+		$('.match').find('[data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').text('-');
+	} else if($(this).siblings('.selected,.runner-up').length<2){
 		if($(this).siblings('.selected').length>0 ){
 			$(this).addClass('runner-up');
 		} else {
@@ -111,7 +99,16 @@ $('.group .team').on('click', function(){
 
 // Knockout stage selection logic
 $('.match .team').on('click', function(){
-	if(!$(this).hasClass('empty') && $(this).siblings('.selected').length<1){
+	if($(this).hasClass('selected')){
+		$(this).removeClass('selected');
+		var thisStage = $(this).parents('.stage').attr('data-stage');
+		thisStage = parseInt(thisStage);
+		laterStages = $('.stage').filter(function(){
+			return parseInt($(this).attr('data-stage'))< thisStage;
+		});
+		console.log(thisStage, laterStages);
+		laterStages.find('.match [data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').text('-');
+	} else if(!$(this).hasClass('empty') && $(this).siblings('.selected').length<1){
 		$(this).addClass('selected');
 	}
 	populateStages();

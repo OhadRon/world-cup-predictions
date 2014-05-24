@@ -16,13 +16,15 @@ h1 {
   padding: 20px 0px;
   text-align: center; }
   .stage > .title {
-    text-align: center;
     font-size: 25px; }
   .stage > .match, .stage .group {
     display: inline-block;
     margin: 20px; }
     .stage > .match .description, .stage .group .description {
-      font-size: 12px; }
+      font-size: 14px; }
+    .stage > .match .title, .stage .group .title {
+      font-weight: bold;
+      margin-bottom: 10px; }
     .stage > .match .team, .stage .group .team {
       width: 190px;
       height: 20px;
@@ -37,10 +39,6 @@ h1 {
         background-color: #359a40; }
       .stage > .match .team.runner-up, .stage .group .team.runner-up {
         background-color: #5c8a5f; }
-    .stage > .match .title, .stage .group .title {
-      font-weight: bold;
-      margin-bottom: 4px;
-      text-align: center; }
 
 #footer {
   text-align: center;
