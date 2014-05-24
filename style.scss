@@ -38,28 +38,37 @@ h1{
 
 		& .team{
 			width: 190px;
-			height: 20px;
+			height: 28px;
 			background-color: #868686;
 			margin: 4px;
-			padding: 8px;
+			line-height: 28px;
 			color: #fff;
-			text-align: left;
+
+			text-align: center;
 			cursor: pointer;
 			transition: 0.2s;
 			font-size: 16px;
 			overflow: hidden;
+			border-radius: 10px;
 
-			&.selected{
+			border-bottom: 6px solid rgba(0,0,0,0.2);
+
+			&.selected, &.runner-up{
 				background-color: #359a40;
-			}
+				height: 28px;
+				border-bottom: 1px solid rgba(0,0,0,0.2);
 
-			&.runner-up{
-				background-color: #5c8a5f;
+				&.runner-up{
+					background-color: #5c8a5f;
+				}
 			}
 
 			&.empty{
 				background-color: #d1d1d1;
 				color: #d1d1d1;
+				border-top: 6px solid rgba(0,0,0,0.2);
+				border-bottom: 0px solid rgba(0,0,0,0.2);
+
 			}
 		}
 
