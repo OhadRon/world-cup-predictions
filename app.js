@@ -74,10 +74,28 @@ function populateStages(){
 					loserDestination.attr('data-team', loser);						
 				}
 			}
-
 		}
-
 	});
+}
+
+function serializeSelections(){
+	var selections = {};
+	$('.stage').each(function(){
+		var currentStage = $(this).attr('data-stage');
+		selections[currentStage] = {};
+		$(this).find('.group').each(function(){
+			currentGroup = $(this).attr('data-group');
+			selections[currentStage][currentGroup] = {}
+			selections[currentStage][currentGroup]['winner'] = $(this).find('.selected').attr('data-team');
+			selections[currentStage][currentGroup]['runner-up'] = $(this).find('.runner-up').attr('data-team');
+		});
+
+		$(this).find('.match').each(function(){
+			selections[currentStage][$(this).attr('data-id')] = $(this).find('.selected').attr('data-team');
+		});
+	});
+
+	return selections;
 }
 
 // Group stage selection logic
