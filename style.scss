@@ -18,7 +18,6 @@ h1{
 	margin-bottom: 10px;
 	padding: 20px 0px;
 	text-align: center;
-
 	&>.title{
 		font-size: 25px;
 	}
@@ -47,6 +46,8 @@ h1{
 			text-align: left;
 			cursor: pointer;
 			transition: 0.2s;
+			font-size: 16px;
+			overflow: hidden;
 
 			&.selected{
 				background-color: #359a40;
@@ -54,6 +55,11 @@ h1{
 
 			&.runner-up{
 				background-color: #5c8a5f;
+			}
+
+			&.empty{
+				background-color: #d1d1d1;
+				color: #d1d1d1;
 			}
 		}
 

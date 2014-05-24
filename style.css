@@ -34,11 +34,16 @@ h1 {
       color: #fff;
       text-align: left;
       cursor: pointer;
-      transition: 0.2s; }
+      transition: 0.2s;
+      font-size: 16px;
+      overflow: hidden; }
       .stage > .match .team.selected, .stage .group .team.selected {
         background-color: #359a40; }
       .stage > .match .team.runner-up, .stage .group .team.runner-up {
         background-color: #5c8a5f; }
+      .stage > .match .team.empty, .stage .group .team.empty {
+        background-color: #d1d1d1;
+        color: #d1d1d1; }
 
 #footer {
   text-align: center;

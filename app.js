@@ -104,7 +104,7 @@ $('.group .team').on('click', function(){
 	if($(this).hasClass('selected') || $(this).hasClass('runner-up')){
 		$(this).removeClass('selected').removeClass('runner-up');
 
-		$('.match').find('[data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').text('-');
+		$('.match').find('[data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').text('');
 	} else if($(this).siblings('.selected,.runner-up').length<2){
 		if($(this).siblings('.selected').length>0 ){
 			$(this).addClass('runner-up');
@@ -125,7 +125,7 @@ $('.match .team').on('click', function(){
 			return parseInt($(this).attr('data-stage'))< thisStage;
 		});
 		console.log(thisStage, laterStages);
-		laterStages.find('.match [data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').text('-');
+		laterStages.find('.match [data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').text('');
 	} else if(!$(this).hasClass('empty') && $(this).siblings('.selected').length<1){
 		$(this).addClass('selected');
 	}
