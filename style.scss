@@ -1,0 +1,68 @@
+body{
+	font-family: 'Open Sans';
+}
+
+#container{
+	position: relative;
+	margin: 0 auto;
+	width: 1100px;
+	top: 50px;
+}
+
+h1{
+	text-align: center;
+}
+
+.stage{
+	background-color: #eee;
+	margin-bottom: 10px;
+	padding: 20px 0px;
+	text-align: center;
+
+	&>.title{
+		text-align: center;
+		font-size: 25px;
+	}
+
+	&>.match, & .group{
+		
+		width: 180px;
+		display: inline-block;
+		margin: 20px;
+		
+		& .description{
+			font-size: 12px;
+		}
+
+		& .team{
+			width: 190px;
+			height: 20px;
+			background-color: #868686;
+			margin: 4px;
+			padding: 8px;
+			color: #fff;
+			text-align: left;
+			cursor: pointer;
+
+			&.selected{
+				background-color: #a75658;
+			}
+
+			&.runner-up{
+				background-color: #969344;
+			}
+		}
+
+		& .title{
+			font-weight: bold;
+			margin-bottom: 4px;
+			text-align: center;
+		}
+	}
+}
+
+#footer{
+	text-align: center;
+	font-size: 12px;
+	margin-bottom: 30px;
+}
