@@ -172,7 +172,7 @@ var firebaseList = firebaseRoot.child('submissionList');
 
 $('#submit').on('click', function(){
 	var submission = {
-		timeStamp : firebaseRoot.ServerValue.TIMESTAMP,
+		timeStamp : new Date().getTime(),
 		userGuess : JSON.stringify(serializeSelections())
 	}
 	var pushRef = firebaseList.push();
