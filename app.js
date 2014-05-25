@@ -130,41 +130,47 @@ function loadFromStorage(data){
 
 // Group stage selection logic
 $('.group .team').on('click', function(){
-	// Check if it is already selected
-	if($(this).hasClass('selected') || $(this).hasClass('runner-up')){
-		$(this).removeClass('selected').removeClass('runner-up');
+	if(!readOnlyMode){
+		// Check if it is already selected
+		if($(this).hasClass('selected') || $(this).hasClass('runner-up')){
+			$(this).removeClass('selected').removeClass('runner-up');
 
-		$('.match').find('[data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').find('.inner').text('');
-	} else if($(this).siblings('.selected,.runner-up').length<2){
-		if($(this).siblings('.selected').length>0 ){
-			$(this).addClass('runner-up');
-		} else {
-			$(this).addClass('selected');
-		}			
+			$('.match').find('[data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').find('.inner').text('');
+		} else if($(this).siblings('.selected,.runner-up').length<2){
+			if($(this).siblings('.selected').length>0 ){
+				$(this).addClass('runner-up');
+			} else {
+				$(this).addClass('selected');
+			}			
+		}
+		populateStages();
+		saveToLocalStorage();		
 	}
-	populateStages();
-	saveToLocalStorage();
 });
 
 // Knockout stage selection logic
 $('.match .team').on('click', function(){
-	if($(this).hasClass('selected')){
-		$(this).removeClass('selected');
-		var thisStage = $(this).parents('.stage').attr('data-stage');
-		thisStage = parseInt(thisStage);
-		laterStages = $('.stage').filter(function(){
-			return parseInt($(this).attr('data-stage'))< thisStage;
-		});
-		laterStages.find('.match [data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').find('.inner').text('');
-	} else if(!$(this).hasClass('empty') && $(this).siblings('.selected').length<1){
-		$(this).addClass('selected');
+	if (!readOnlyMode){
+		if($(this).hasClass('selected')){
+			$(this).removeClass('selected');
+			var thisStage = $(this).parents('.stage').attr('data-stage');
+			thisStage = parseInt(thisStage);
+			laterStages = $('.stage').filter(function(){
+				return parseInt($(this).attr('data-stage'))< thisStage;
+			});
+			laterStages.find('.match [data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').find('.inner').text('');
+		} else if(!$(this).hasClass('empty') && $(this).siblings('.selected').length<1){
+			$(this).addClass('selected');
+		}
+		populateStages();
+		saveToLocalStorage();		
 	}
-	populateStages();
-	saveToLocalStorage();
 });
 
 $('#clearAll').on('click',function(){
-	$('.stage[data-stage="groups"]').find('.selected, .runner-up').click();
+	if(!readOnlyMode){
+		$('.stage[data-stage="groups"]').find('.selected, .runner-up').click();
+	}
 });
 
 var firebaseRoot = new Firebase('https://sizzling-fire-7955.firebaseIO.com/');
@@ -212,12 +218,11 @@ $('#facebook-login').on('click',function(){
 
 function readItem(id, callback){
 	firebaseList.child('public').child(id).once('value', function(snapshot) {
-		console.log(snapshot.val());
 		callback(snapshot.val());
 	});
 }
 
-var readOnlyMode = true;
+var readOnlyMode = false;
 
 if(window.location.hash) {
 	console.log('reading', window.location.hash.substring(1));
@@ -225,6 +230,7 @@ if(window.location.hash) {
 		console.log('Remote data retrieved: ',data);
 		loadFromStorage(data.userGuess);
 		$('#loader').fadeOut();
+		readOnlyMode = true;
 		$('#container').fadeIn();
 		var date = new Date(data.timeStamp);
 		var years = date.getFullYear();
