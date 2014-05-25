@@ -5,7 +5,8 @@ body {
   position: relative;
   margin: 0 auto;
   width: 1100px;
-  top: 50px; }
+  top: 50px;
+  display: none; }
 
 h1 {
   text-align: center; }

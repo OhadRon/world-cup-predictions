@@ -102,6 +102,32 @@ function saveToLocalStorage(){
 	localStorage.data = JSON.stringify(data);
 }
 
+function clearStorage(){
+	localStorage.data = undefined;
+}
+
+function loadFromStorage(data){
+	data = JSON.parse(data);
+	for (var group in data.groups){
+		if (data.groups.hasOwnProperty(group)){
+			$('[data-stage="groups"] [data-team="'+data.groups[group]['winner']+'"]').click();
+			$('[data-stage="groups"] [data-team="'+data.groups[group]['runner-up']+'"]').click();
+		}
+	}
+
+	function clickStage(num, callback){
+		for(var match in data[num]){
+			$('[data-stage="'+num+'"] [data-team="'+data[num][match]+'"]').click();
+		}
+	}
+
+	clickStage(16);
+	clickStage(8);
+	clickStage(4);
+	clickStage(3);
+	clickStage(2);
+};
+
 // Group stage selection logic
 $('.group .team').on('click', function(){
 	// Check if it is already selected
@@ -141,30 +167,37 @@ $('#clearAll').on('click',function(){
 	$('.stage[data-stage="groups"]').find('.selected, .runner-up').click();
 });
 
-function clearStorage(){
-	localStorage.data = undefined;
+var firebaseRoot = new Firebase('https://sizzling-fire-7955.firebaseIO.com/');
+var firebaseList = firebaseRoot.child('submissionList');
+
+$('#submit').on('click', function(){
+	var submission = {
+		timeStamp : firebaseRoot.ServerValue.TIMESTAMP,
+		userGuess : JSON.stringify(serializeSelections())
+	}
+	var pushRef = firebaseList.push();
+	pushRef.set(submission);
+	$('#urlresult').val(window.location.origin+window.location.pathname+'#'+pushRef.name());
+});
+
+function readItem(id, callback){
+	firebaseList.child(id).once('value', function(snapshot) {
+		console.log(snapshot.val());
+		callback(snapshot.val());
+	});
 }
 
-function loadLocalStorage(data){
-	data = JSON.parse(data);
-	for (var group in data.groups){
-		if (data.groups.hasOwnProperty(group)){
-			$('[data-stage="groups"] [data-team="'+data.groups[group]['winner']+'"]').click();
-			$('[data-stage="groups"] [data-team="'+data.groups[group]['runner-up']+'"]').click();
-		}
-	}
+if(window.location.hash) {
+	console.log('reading', window.location.hash.substring(1));
+	readItem(window.location.hash.substring(1), function(data){
+		console.log(data);
+		loadFromStorage(data.userGuess);
+		$('#loader').fadeOut();
+		$('#container').fadeIn();
+	});	
+} else {
+	if (!(localStorage.data == undefined)) loadFromStorage(localStorage.data);
+		$('#loader').fadeOut();
+		$('#container').fadeIn();
+}
 
-	function clickStage(num, callback){
-		for(var match in data[num]){
-			$('[data-stage="'+num+'"] [data-team="'+data[num][match]+'"]').click();
-		}
-	}
-
-	clickStage(16);
-	clickStage(8);
-	clickStage(4);
-	clickStage(3);
-	clickStage(2);
-};
-
-if (!(localStorage.data == undefined)) loadLocalStorage(localStorage.data);
