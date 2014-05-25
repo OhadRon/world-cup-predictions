@@ -71,6 +71,12 @@ h1{
 
 			&.selected:after{
 				top: 25px;
+				background-color: darken(#6EBF6C, 10%);
+			}
+
+			&.runner-up:after{
+				top: 25px;
+				background-color: darken(#5e975b, 10%);
 			}
 
 			&.empty:after{
