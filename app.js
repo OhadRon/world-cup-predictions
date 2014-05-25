@@ -26,13 +26,13 @@ function populateStages(){
 				.eq(1);
 
 		if(winner){
-			winnerDestination.text(teams[winner].name);	
+			winnerDestination.find('.inner').text(teams[winner].name);	
 			winnerDestination.removeClass('empty');
 			winnerDestination.attr('data-team', winner);
 		};
 
 		if(runnerUp){
-			runnerUpDestination.text(teams[runnerUp].name);	
+			runnerUpDestination.find('.inner').text(teams[runnerUp].name);	
 			runnerUpDestination.removeClass('empty');
 			runnerUpDestination.attr('data-team', runnerUp);
 		};
@@ -51,7 +51,7 @@ function populateStages(){
 			// Make sure that team isn't already in that match
 			if(winnerDestination.find('[data-team="'+winner+'"]').length < 1){ 
 				winnerDestination = winnerDestination.find('.empty').eq(0);
-				winnerDestination.text(teams[winner].name);	
+				winnerDestination.find('.inner').text(teams[winner].name);	
 				winnerDestination.removeClass('empty');
 				winnerDestination.attr('data-team', winner);						
 			}
@@ -68,7 +68,7 @@ function populateStages(){
 				// Make sure that team isn't already in that match
 				if(loserDestination.find('[data-team="'+loser+'"]').length < 1){ 
 					loserDestination = loserDestination.find('.empty').eq(0);
-					loserDestination.text(teams[loser].name);	
+					loserDestination.find('.inner').text(teams[loser].name);	
 					loserDestination.removeClass('empty');
 					loserDestination.attr('data-team', loser);						
 				}
@@ -108,7 +108,7 @@ $('.group .team').on('click', function(){
 	if($(this).hasClass('selected') || $(this).hasClass('runner-up')){
 		$(this).removeClass('selected').removeClass('runner-up');
 
-		$('.match').find('[data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').text('');
+		$('.match').find('[data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').find('.inner').text('');
 	} else if($(this).siblings('.selected,.runner-up').length<2){
 		if($(this).siblings('.selected').length>0 ){
 			$(this).addClass('runner-up');
@@ -129,7 +129,7 @@ $('.match .team').on('click', function(){
 		laterStages = $('.stage').filter(function(){
 			return parseInt($(this).attr('data-stage'))< thisStage;
 		});
-		laterStages.find('.match [data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').text('');
+		laterStages.find('.match [data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').find('.inner').text('');
 	} else if(!$(this).hasClass('empty') && $(this).siblings('.selected').length<1){
 		$(this).addClass('selected');
 	}
