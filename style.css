@@ -11,6 +11,12 @@ body {
 h1 {
   text-align: center; }
 
+#restoreData {
+  text-align: center;
+  display: none;
+  margin: 20px 0px;
+  font-size: 20px; }
+
 .stage {
   background-color: #eee;
   margin-bottom: 10px;
@@ -91,6 +97,13 @@ h1 {
         background-color: #5e975b; }
       .stage > .match .team.empty .inner, .stage .group .team.empty .inner {
         bottom: -40px; }
+
+#submit {
+  display: none; }
+
+input#urlresult {
+  display: none;
+  width: 250px; }
 
 #footer {
   text-align: center;

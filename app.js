@@ -169,35 +169,80 @@ $('#clearAll').on('click',function(){
 
 var firebaseRoot = new Firebase('https://sizzling-fire-7955.firebaseIO.com/');
 var firebaseList = firebaseRoot.child('submissionList');
+var auth = new FirebaseSimpleLogin(firebaseRoot, function(error, user) {
+	console.log('trying to log in');
+	if(user){
+		console.log('login succesful', user);
+		userData = user;
+		$('#submit').fadeIn();
+		$('#urlresult').fadeIn();
+		$('#facebook-login').text('Logged in as '+userData.displayName);		
+	}
+});
+
+var userData;
 
 $('#submit').on('click', function(){
 	var submission = {
 		timeStamp : new Date().getTime(),
-		userGuess : JSON.stringify(serializeSelections())
+		userGuess : JSON.stringify(serializeSelections()),
+		facebookName : userData.displayName || null
 	}
-	var pushRef = firebaseList.push();
+	var privatePart = {
+		facebookId : userData.id || null,
+		email : userData.thirdPartyUserData.email || null
+	}
+
+	var pushRef = firebaseList.child('public').push();
 	pushRef.set(submission);
+	firebaseList.child('private').child(pushRef.name()).set(privatePart);
 	$('#urlresult').val(window.location.origin+window.location.pathname+'#'+pushRef.name());
 });
 
+$('#urlresult').on('focus',function(){
+	$(this).select();
+}).mouseup(function(e) { return false; });;
+
+$('#facebook-login').on('click',function(){
+	auth.login('facebook', {
+		rememberMe: true,
+		scope: 'email'
+	});
+});
+
 function readItem(id, callback){
-	firebaseList.child(id).once('value', function(snapshot) {
+	firebaseList.child('public').child(id).once('value', function(snapshot) {
 		console.log(snapshot.val());
 		callback(snapshot.val());
 	});
 }
 
+var readOnlyMode = true;
+
 if(window.location.hash) {
 	console.log('reading', window.location.hash.substring(1));
 	readItem(window.location.hash.substring(1), function(data){
-		console.log(data);
+		console.log('Remote data retrieved: ',data);
 		loadFromStorage(data.userGuess);
 		$('#loader').fadeOut();
 		$('#container').fadeIn();
+		var date = new Date(data.timeStamp);
+		var years = date.getFullYear();
+		var months = date.getMonth();
+		var days = date.getDate();
+		var hours = date.getHours();
+		var minutes = date.getMinutes();
+
+		var formattedTime = days+'.'+months+'.'+years+' at '+hours + ':' + minutes;
+
+		$('#restoreData #userName').text(data.facebookName);
+		$('#restoreData #userTime').text(formattedTime);
+		$('#restoreData').fadeIn();
 	});	
 } else {
+	readOnlyMode = false;
 	if (!(localStorage.data == undefined)) loadFromStorage(localStorage.data);
-		$('#loader').fadeOut();
-		$('#container').fadeIn();
+	$('#loader').fadeOut();
+	$('#container').fadeIn();
 }
 

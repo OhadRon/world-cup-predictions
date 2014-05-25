@@ -4,6 +4,7 @@
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
+	<script type='text/javascript' src='https://cdn.firebase.com/js/simple-login/1.4.1/firebase-simple-login.js'></script>
 
 	<title>World Cup 2014 Predictions</title>
 </head>
@@ -11,7 +12,7 @@
 	<div id="loader"> LOADING </div>
 	<div id="container">
 		<h1>2104 World Cup Predictions</h1>
-
+		<div id="restoreData">These are <span id="userName"></span>'s predictions, as of <span id="userTime"></span></div>
 		<div class="stage" data-stage="groups">
 			<div class="title">Groups Stage</div>
 
@@ -170,6 +171,7 @@
 
 		<div id="utils">
 			<button id="clearAll">Clear all selections</button>
+			<button id="facebook-login">Login with Facebook</button>
 			<button id="submit">Submit to server</button>
 			<input type="text" id="urlresult">
 		</div>
