@@ -113,8 +113,9 @@ h1 {
         height: 35px;
         top: 10px;
         border-radius: 12px;
-        background-color: #fff;
-        box-shadow: inset 0px 3px 0px 0px rgba(0, 0, 0, 0.2); }
+        background-color: #676767;
+        box-shadow: inset 0px 4px 0px 0px rgba(0, 0, 0, 0.2);
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
       .stage > .match .team .inner, .stage .group .team .inner {
         color: #747474;
         position: absolute;
@@ -136,7 +137,8 @@ h1 {
         color: #fff;
         background-color: #36702D; }
       .stage > .match .team.empty .inner, .stage .group .team.empty .inner {
-        bottom: -40px; }
+        bottom: -40px;
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
 
 #utils {
   background-color: #fff;
