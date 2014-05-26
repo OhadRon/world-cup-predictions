@@ -226,6 +226,9 @@ if(window.location.hash) {
 		$('#container').fadeIn();
 		$('#restoreData #userName').text(data.facebookName);
 		$('#restoreData #userTime').text(formatTime(data.timeStamp));
+		$('#restoreData').append('<br><img id="userImage">');
+		$('#userImage').attr('src', 'http://graph.facebook.com/v2.0/'+window.location.hash.substring(1)+'/picture?height=200&type=normal&width=200');
+		
 		$('#restoreData').fadeIn();
 	});	
 } else {
