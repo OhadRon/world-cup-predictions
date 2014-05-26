@@ -222,6 +222,9 @@ if(window.location.hash) {
 
 	readItem(window.location.hash.substring(1), function(data){
 		console.log('Remote data retrieved: ',data);
+		if (data == null){ // no such share ID
+			window.location.replace("/");
+		}
 		loadFromStorage(data.userGuess);
 		$('#loader').fadeOut();
 		$('#utils').hide();
@@ -247,8 +250,8 @@ function formatTime(stamp){
 		var years = date.getFullYear();
 		var months = date.getMonth()+1;
 		var days = date.getDate();
-		var hours = date.getHours();
-		var minutes = date.getMinutes();
+		var hours = ("0" + date.getHours()).slice(-2);;
+		var minutes = ("0" + date.getMinutes()).slice(-2);;
 
 		var formattedTime = days+'.'+months+'.'+years+' at '+hours + ':' + minutes;
 		return formattedTime;
