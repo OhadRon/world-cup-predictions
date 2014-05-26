@@ -227,7 +227,7 @@ if(window.location.hash) {
 		$('#restoreData #userName').text(data.facebookName);
 		$('#restoreData #userTime').text(formatTime(data.timeStamp));
 		$('#restoreData').append('<br><img id="userImage">');
-		$('#userImage').attr('src', 'http://graph.facebook.com/v2.0/'+window.location.hash.substring(1)+'/picture?height=200&type=normal&width=200');
+		$('#userImage').attr('src', 'http://graph.facebook.com/v2.0/'+window.location.hash.substring(1)+'/picture?height=170&type=normal&width=170');
 		
 		$('#restoreData').fadeIn();
 	});	

@@ -24,6 +24,10 @@ h1 {
   display: none;
   margin: 20px 0px;
   font-size: 20px; }
+  #restoreData img {
+    border-radius: 140px;
+    border: 4px solid rgba(0, 0, 0, 0.4);
+    margin: 20px 0px; }
 
 .stage {
   margin-bottom: 10px;
