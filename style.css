@@ -160,7 +160,7 @@ button {
     color: #eee;
     background-color: #425f9f; }
 
-#submit {
+#clearAll, #submit {
   display: none; }
 
 input#urlresult {

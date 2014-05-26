@@ -95,10 +95,6 @@ function saveToLocalStorage(){
 	}
 }
 
-function clearStorage(){
-	localStorage.data = undefined;
-}
-
 function loadFromStorage(data){
 	data = JSON.parse(data);
 	for (var group in data.groups){
@@ -161,7 +157,7 @@ $('.match .team').on('click', function(){
 });
 
 $('#clearAll').on('click',function(){
-	if(!readOnlyMode){
+	if(!readOnlyMode && !remoteVersion){
 		$('.stage[data-stage="groups"]').find('.selected, .runner-up').click();
 	}
 });
@@ -192,9 +188,9 @@ $('#submit').on('click', function(){
 		email : userData.thirdPartyUserData.email || null
 	}
 
-	var pushRef = firebaseList.child('public').push();
+	var pushRef = firebaseList.child('public').child(userData.id);
 	pushRef.set(submission);
-	firebaseList.child('private').child(pushRef.name()).set(privatePart);
+	firebaseList.child('private').child(userData.id).set(privatePart);
 	$('#urlresult').val(window.location.origin+window.location.pathname+'#'+pushRef.name());
 });
 
@@ -228,17 +224,8 @@ if(window.location.hash) {
 		$('#loader').fadeOut();
 		readOnlyMode = true;
 		$('#container').fadeIn();
-		var date = new Date(data.timeStamp);
-		var years = date.getFullYear();
-		var months = date.getMonth();
-		var days = date.getDate();
-		var hours = date.getHours();
-		var minutes = date.getMinutes();
-
-		var formattedTime = days+'.'+months+'.'+years+' at '+hours + ':' + minutes;
-
 		$('#restoreData #userName').text(data.facebookName);
-		$('#restoreData #userTime').text(formattedTime);
+		$('#restoreData #userTime').text(formatTime(data.timeStamp));
 		$('#restoreData').fadeIn();
 	});	
 } else {
@@ -246,5 +233,17 @@ if(window.location.hash) {
 	if (!(localStorage.data == undefined)) loadFromStorage(localStorage.data);
 	$('#loader').fadeOut();
 	$('#container').fadeIn();
+	$('#clearAll').fadeIn();
 }
 
+function formatTime(stamp){
+		var date = new Date(stamp);
+		var years = date.getFullYear();
+		var months = date.getMonth();
+		var days = date.getDate();
+		var hours = date.getHours();
+		var minutes = date.getMinutes();
+
+		var formattedTime = days+'.'+months+'.'+years+' at '+hours + ':' + minutes;
+		return formattedTime;
+}
