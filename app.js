@@ -159,6 +159,7 @@ $('.match .team').on('click', function(){
 $('#clearAll').on('click',function(){
 	if(!readOnlyMode && !remoteVersion){
 		$('.stage[data-stage="groups"]').find('.selected, .runner-up').click();
+		$("html, body").animate({ scrollTop: 0 }, "slow");
 	}
 });
 
@@ -170,7 +171,6 @@ var auth = new FirebaseSimpleLogin(firebaseRoot, function(error, user) {
 		console.log('login succesful', user);
 		userData = user;
 		$('#submit').fadeIn();
-		$('#urlresult').fadeIn();
 		$('#facebook-login').text('Logged in as '+userData.displayName);		
 	}
 });
@@ -191,6 +191,8 @@ $('#submit').on('click', function(){
 	var pushRef = firebaseList.child('public').child(userData.id);
 	pushRef.set(submission);
 	firebaseList.child('private').child(userData.id).set(privatePart);
+	$('#shareGuide').fadeIn();
+	$('button').slideUp();
 	$('#urlresult').val(window.location.origin+window.location.pathname+'#'+pushRef.name());
 });
 
@@ -222,12 +224,13 @@ if(window.location.hash) {
 		console.log('Remote data retrieved: ',data);
 		loadFromStorage(data.userGuess);
 		$('#loader').fadeOut();
+		$('#utils').hide();
+		$('#bottomBanner').show();
 		readOnlyMode = true;
 		$('#container').fadeIn();
 		$('#restoreData #userName').text(data.facebookName);
 		$('#restoreData #userTime').text(formatTime(data.timeStamp));
-		$('#restoreData').append('<br><img id="userImage">');
-		$('#userImage').attr('src', 'http://graph.facebook.com/v2.0/'+window.location.hash.substring(1)+'/picture?height=170&type=normal&width=170');
+		$('#userImage').attr('src', 'http://graph.facebook.com/v2.0/'+window.location.hash.substring(1)+'/picture?height=170&type=normal&width=170').show();;
 		
 		$('#restoreData').fadeIn();
 	});	
@@ -242,7 +245,7 @@ if(window.location.hash) {
 function formatTime(stamp){
 		var date = new Date(stamp);
 		var years = date.getFullYear();
-		var months = date.getMonth();
+		var months = date.getMonth()+1;
 		var days = date.getDate();
 		var hours = date.getHours();
 		var minutes = date.getMinutes();

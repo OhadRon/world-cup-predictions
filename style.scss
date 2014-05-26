@@ -189,6 +189,7 @@ h1{
 	background-color: #fff;
 	padding: 20px;
 	margin: 20px;
+	text-align: center;
 }
 
 button{
@@ -218,15 +219,37 @@ button{
 		background-color: #425f9f;
 	}
 
+	&:focus{
+		outline: none;
+	}
+
 }
 
-#clearAll,#submit{
+#shareGuide{
+	font-size: 20px;
+}
+
+#bottomBanner{
+	font-size: 30px;
+	text-align: center;
+	margin: 30 0;
+}
+
+#clearAll,#submit, #shareGuide, #bottomBanner{
 	display: none;
 }
+
 
 input#urlresult{
-	display: none;
-	width: 250px;
+	width: 400px;
+	margin-top: 20px;
+	font-size: 17px;
+	padding: 10px;
+	font-family: $avenirs;
+
+	&:focus{
+		outline: none;
+	}
 }
 
 
@@ -236,8 +259,8 @@ input#urlresult{
 	font-size: 12px;
 	margin-top: 20px;
 	margin-bottom: 30px;
+}
 
-	& a, & a:visited, & a:active,  & a:hover{
-		color: #444;
-	}
+a, a:visited, a:active,  a:hover{
+	color: #444;
 }

@@ -13,7 +13,7 @@
 	<div id="loader"> LOADING </div>
 	<div id="container">
 		<h1>2104 World Cup Predictions</h1>
-		<div id="restoreData">These are <span id="userName"></span>'s predictions, as of <span id="userTime"></span> <a href="/">Try your own!</a></div>
+		<div id="restoreData">These are <span id="userName"></span>'s predictions, as of <span id="userTime"></span><br><img id="userImage" style="display:none;"><br><a href="/">Try your own!</a></div>
 		<div class="stage" data-stage="groups">
 			<div class="title">Groups Stage</div>
 
@@ -171,10 +171,16 @@
 		</div>
 
 		<div id="utils">
-			<button id="clearAll">Clear all selections</button>
-			<button id="facebook-login">Login with Facebook</button>
-			<button id="submit">Submit to server</button>
-			<input type="text" id="urlresult">
+			<button id="clearAll">Clear all selections and start over</button>
+			<button id="facebook-login">Login with Facebook so you can share this</button>
+			<button id="submit">Save and Share</button>
+			<div id="shareGuide">
+				Selection saved! You can now share your guess with your friends. Just post this link anywhere:
+				<input type="text" id="urlresult">
+			</div>
+		</div>
+		<div id="bottomBanner">
+			<a href="/">Think you know better? Try your own guess!</a>
 		</div>
 		<div id="footer">
 			Made in Tel Aviv by <a href="http://eladtayar.com">Elad</a> and <a href="http://ohadron.com">Ohad</a>

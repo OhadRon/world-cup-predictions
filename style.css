@@ -141,7 +141,8 @@ h1 {
 #utils {
   background-color: #fff;
   padding: 20px;
-  margin: 20px; }
+  margin: 20px;
+  text-align: center; }
 
 button {
   box-shadow: inset 0px -2px 0px 0px rgba(0, 0, 0, 0.3);
@@ -163,13 +164,28 @@ button {
   button#facebook-login {
     color: #eee;
     background-color: #425f9f; }
+  button:focus {
+    outline: none; }
 
-#clearAll, #submit {
+#shareGuide {
+  font-size: 20px; }
+
+#bottomBanner {
+  font-size: 30px;
+  text-align: center;
+  margin: 30 0; }
+
+#clearAll, #submit, #shareGuide, #bottomBanner {
   display: none; }
 
 input#urlresult {
-  display: none;
-  width: 250px; }
+  width: 400px;
+  margin-top: 20px;
+  font-size: 17px;
+  padding: 10px;
+  font-family: "Avenir Next", "Montserrat", Helvetica; }
+  input#urlresult:focus {
+    outline: none; }
 
 #footer {
   font-family: "Avenir Next", "Montserrat", Helvetica;
@@ -177,5 +193,6 @@ input#urlresult {
   font-size: 12px;
   margin-top: 20px;
   margin-bottom: 30px; }
-  #footer a, #footer a:visited, #footer a:active, #footer a:hover {
-    color: #444; }
+
+a, a:visited, a:active, a:hover {
+  color: #444; }
