@@ -147,3 +147,5 @@ input#urlresult {
   font-size: 12px;
   margin-top: 20px;
   margin-bottom: 30px; }
+  #footer a, #footer a:visited, #footer a:active, #footer a:hover {
+    color: #444; }
