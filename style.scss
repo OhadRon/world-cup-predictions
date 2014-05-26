@@ -1,6 +1,11 @@
 body{
-	font-family: 'Open Sans';
+	font-family: 'Roboto Slab', Helvetica;
+	background-color: #f1f1f1;
 }
+
+$titleGreen: #5CA850;
+
+$avenirs: "Avenir Next", "Montserrat", Helvetica;
 
 #container{
 	position: relative;
@@ -12,6 +17,13 @@ body{
 
 h1{
 	text-align: center;
+	font-family: $avenirs;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: 0.4em;
+	font-size: 23px;
+	color: $titleGreen;
+	margin-bottom: 50px;
 }
 
 #restoreData{
@@ -22,44 +34,76 @@ h1{
 }
 
 .stage{
-	background-color: #eee;
 	margin-bottom: 10px;
-	padding: 20px 0px;
 	text-align: center;
+
 	&>.title{
-		font-size: 25px;
+		font-size: 36px;
+		color: #494949;
+		font-family: $avenirs;
+		font-weight: bold;
+		letter-spacing: 21px;
+		margin: 30px auto;
+		text-transform: uppercase;
+
+	    display: table;
+		white-space: nowrap;
+		width: 100%;
+
+		&:before, &:after {
+			border-top: 8px solid $titleGreen;
+			content: ' ';
+			display: table-cell;
+			position: relative;
+			top: 0.5em;
+			width: 30%;
+		}
+
+		&:before { right: 3%; }
+		&:after { left: 3%; }
 	}
 
 	&>.match, & .group{
 		
 		display: inline-block;
-		margin: 20px;
+		margin: 5px;
+		// border-radius: 22px;
+		background-color: rgba(215,215,215,0.31);
+		padding: 25px;
 		
 		& .description{
 			font-size: 14px;
+			color: #828282;
+			font-weight: bold;
+			margin-bottom: 15px;
 		}
 
 		& .title{
+			font-size: 15px;
+			color: #828282;
 			font-weight: bold;
-			margin-bottom: 10px;
+			margin-bottom: 20px;
+			text-transform: uppercase;
 		}
 
 		& .team{
-			width: 190px;
+			width: 210px;
 			height: 45px;
-			margin-bottom: 4px;
+			margin-bottom: 15px;
 			cursor: pointer;
 			font-size: 16px;
+			font-weight: 300;
 			overflow: hidden;
 			border-radius: 13px;
 			-webkit-user-select: none;
-			box-shadow: 0px 5px 0px 0px rgba(0,0,0,0.1);
+			box-shadow: 0px 5px 0px 0px rgba(193,193,193,0.4);
 			transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 			position: relative;
 			text-align: left;
+			color: #747474;
 
 			&.selected, &.runner-up{
-				box-shadow: 0px 2px 0px 0px rgba(0,0,0,0.1);
+				box-shadow: 0px 2px 0px 0px rgba(193,193,193,0.4);
 			}
 
 			&.empty{
@@ -69,9 +113,9 @@ h1{
 			&:after{
 				position: absolute;
 				content: ' ';
-				background-color: #bbbbbb;
+				background-color: #C0C0C0;
 				height: 100px;
-				width: 190px;
+				width: 210px;
 				top: 20px;
 				z-index: 2;
 				  transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -79,12 +123,12 @@ h1{
 
 			&.selected:after{
 				top: 25px;
-				background-color: darken(#6EBF6C, 10%);
+				background-color: darken(#74D066, 10%);
 			}
 
 			&.runner-up:after{
 				top: 25px;
-				background-color: darken(#5e975b, 10%);
+				background-color: darken(#36702D, 10%);
 			}
 
 			&.empty:after{
@@ -94,7 +138,7 @@ h1{
 			&:before{
 				position: absolute;
 				content: ' ';
-				width: 190px;
+				width: 210px;
 				height: 35px;
 				top: 10px;
 				border-radius: 12px;
@@ -103,12 +147,12 @@ h1{
 			}
 
 			& .inner{
-				color: #333;
+				color: #747474;
 				position: absolute;
-				width: 190px;
+				width: 210px;
 				height: 35px;
 				bottom: 6px;
-				background-color: #ccc;
+				background-color: #fff;
 				border-radius: 12px;
 				line-height: 35px;
 				text-align: center;
@@ -119,13 +163,13 @@ h1{
 			&.selected .inner{
 				bottom: 2px;
 				color: #fff;
-				background-color: #6EBF6C;
+				background-color: #74D066;
 			}
 
 			&.runner-up .inner{
 				bottom: 2px;
 				color: #fff;
-				background-color: #5e975b;
+				background-color: #36702D;
 			}
 
 			&.empty .inner{
@@ -146,6 +190,7 @@ input#urlresult{
 
 
 #footer{
+	font-family: $avenirs;
 	text-align: center;
 	font-size: 12px;
 	margin-top: 20px;
