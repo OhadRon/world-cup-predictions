@@ -181,7 +181,8 @@ button {
   display: none; }
 
 input#urlresult {
-  width: 400px;
+  width: 750px;
+  text-align: center;
   margin-top: 20px;
   font-size: 17px;
   padding: 10px;

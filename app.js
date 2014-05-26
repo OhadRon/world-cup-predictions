@@ -194,6 +194,7 @@ $('#submit').on('click', function(){
 	$('#shareGuide').fadeIn();
 	$('button').slideUp();
 	$('#urlresult').val(window.location.origin+window.location.pathname+'#'+pushRef.name());
+	readOnlyMode = true;
 });
 
 $('#urlresult').on('focus',function(){
