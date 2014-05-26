@@ -1,15 +1,6 @@
 
 var teams = JSON.parse(data.teams);
 
-function testing(){
-	$('.group .team').each(function(index){		
-			$(this).click();
-	});
-	$('.team').each(function(){
-		$(this).click();
-	});
-}
-
 function populateStages(){
 	$('.group').each(function(){ // From groups to 16th
 		var winner = $(this).find('.selected').attr('data-team');
@@ -98,8 +89,10 @@ function serializeSelections(){
 }
 
 function saveToLocalStorage(){
-	var data = serializeSelections();
-	localStorage.data = JSON.stringify(data);
+	if (!remoteVersion){
+		var data = serializeSelections();
+		localStorage.data = JSON.stringify(data);		
+	}
 }
 
 function clearStorage(){
@@ -223,9 +216,12 @@ function readItem(id, callback){
 }
 
 var readOnlyMode = false;
+var remoteVersion = false;
 
 if(window.location.hash) {
-	console.log('reading', window.location.hash.substring(1));
+	remoteVersion = true;
+	console.log('Loading', window.location.hash.substring(1));
+
 	readItem(window.location.hash.substring(1), function(data){
 		console.log('Remote data retrieved: ',data);
 		loadFromStorage(data.userGuess);

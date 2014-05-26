@@ -134,6 +134,32 @@ h1 {
       .stage > .match .team.empty .inner, .stage .group .team.empty .inner {
         bottom: -40px; }
 
+#utils {
+  background-color: #fff;
+  padding: 20px;
+  margin: 20px; }
+
+button {
+  box-shadow: inset 0px -2px 0px 0px rgba(0, 0, 0, 0.3);
+  background-color: #ededed;
+  border-radius: 6px;
+  border: 1px solid #dcdcdc;
+  display: inline-block;
+  cursor: pointer;
+  color: #777777;
+  font-size: 15px;
+  font-family: "Avenir Next", "Montserrat", Helvetica;
+  padding: 6px 24px;
+  text-decoration: none; }
+  button:hover {
+    background-color: #dfdfdf; }
+  button:active {
+    position: relative;
+    top: 1px; }
+  button#facebook-login {
+    color: #eee;
+    background-color: #425f9f; }
+
 #submit {
   display: none; }
 
