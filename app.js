@@ -233,7 +233,7 @@ if(window.location.hash) {
 		$('#container').fadeIn();
 		$('#userName').text(data.facebookName+'\'s');
 		$('#userTime').text('Made on ' + formatTime(data.timeStamp));
-		$('#userImage').attr('src', 'http://graph.facebook.com/v2.0/'+window.location.hash.substring(1)+'/picture?height=170&type=normal&width=170').show();;
+		$('#userImage img').attr('src', 'http://graph.facebook.com/v2.0/'+window.location.hash.substring(1)+'/picture?height=170&type=normal&width=170').show();;
 	});	
 } else {
 	readOnlyMode = false;
