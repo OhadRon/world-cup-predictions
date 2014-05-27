@@ -18,8 +18,15 @@
 <body>
 	<div id="loader"> LOADING </div>
 	<div id="container">
-		<h1>2104 World Cup Guess</h1>
-		<div id="restoreData">These are <span id="userName"></span>'s predictions, as of <span id="userTime"></span><br><img id="userImage" style="display:none;"><br><a href="/">Try your own!</a></div>
+		<div id="titlearea">
+			<img id="userImage" />
+			<div id="centralHeader">
+				<div id="userName"></div>
+				<div id="mainTitle">2104 World Cup <br>Guesses</div>
+				<div id="userTime"></div>
+			</div>
+			<div id="tryButton">Try yours now</div>
+		</div>
 		<div class="stage" data-stage="groups">
 			<div class="title">Groups Stage</div>
 
@@ -43,7 +50,7 @@
 				<div class="team" data-team="17"><div class="inner">Greece</div></div>
 				<div class="team" data-team="21"><div class="inner">Ivory Coast</div></div>
 				<div class="team" data-team="22"><div class="inner">Japan</div></div></div>
-			<div class="group" data-group="D" data-winner="16.6" data-runnerup="16.2">
+			<div class="group norightbar" data-group="D" data-winner="16.6" data-runnerup="16.2">
 				<div class="title">Group D</div>
 				<div class="team" data-team="10"><div class="inner">Costa Rica</div></div>
 				<div class="team" data-team="13"><div class="inner">England</div></div>
@@ -71,7 +78,7 @@
 				<div class="team" data-team="26"><div class="inner">Portugal</div></div>
 				<div class="team" data-team="31"><div class="inner">United States</div></div>
 			</div>
-			<div class="group" data-group="H" data-winner="16.8" data-runnerup="16.4">
+			<div class="group norightbar" data-group="H" data-winner="16.8" data-runnerup="16.4">
 				<div class="title">Group H</div>
 				<div class="team" data-team="1"><div class="inner">Algeria</div></div>
 				<div class="team" data-team="4"><div class="inner">Belgium</div></div>
@@ -97,7 +104,7 @@
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
 			</div>
-			<div class="match" data-id="4" data-winner="8.2">
+			<div class="match norightbar" data-id="4" data-winner="8.2">
 				<div class="description">G winner vs H runner-up</div>
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
@@ -117,7 +124,7 @@
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
 			</div>
-			<div class="match" data-id="8" data-winner="8.4">
+			<div class="match norightbar" data-id="8" data-winner="8.4">
 				<div class="description">H winner vs G runner-up</div>
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
@@ -140,7 +147,7 @@
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
 			</div>
-			<div class="match" data-id="4" data-winner="4.2">
+			<div class="match norightbar" data-id="4" data-winner="4.2">
 				<div class="description"></div>
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
@@ -153,7 +160,7 @@
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
 			</div>
-			<div class="match" data-id="2" data-winner="2.1" data-loser="3.1">
+			<div class="match norightbar" data-id="2" data-winner="2.1" data-loser="3.1">
 				<div class="description"></div>
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
@@ -161,7 +168,7 @@
 		</div>
 		<div class="stage" data-stage="3">
 			<div class="title">Third Place</div>
-			<div class="match" data-id="1">
+			<div class="match norightbar" data-id="1">
 				<div class="description"></div>
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
@@ -169,7 +176,7 @@
 		</div>
 		<div class="stage" data-stage="2">
 			<div class="title">Final</div>
-			<div class="match" data-id="1">
+			<div class="match norightbar" data-id="1">
 				<div class="description"></div>
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
@@ -185,13 +192,12 @@
 				<input type="text" id="urlresult">
 			</div>
 		</div>
-		<div id="bottomBanner">
-			<a href="/">Think you know better? Try your own guess!</a>
-		</div>
-		<div id="footer">
-			Made in Tel Aviv by <a href="http://eladtayar.com">Elad</a> and <a href="http://ohadron.com">Ohad</a>
-		</div>		
 	</div>
+
+	<div id="footer">
+		Made in Tel Aviv by <a href="http://eladtayar.com">Elad</a> and <a href="http://ohadron.com">Ohad</a>
+	</div>		
+
 <script src="data.js"></script>
 <script src="app.js"></script>
 

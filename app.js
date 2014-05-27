@@ -229,14 +229,11 @@ if(window.location.hash) {
 		loadFromStorage(data.userGuess);
 		$('#loader').fadeOut();
 		$('#utils').hide();
-		$('#bottomBanner').show();
 		readOnlyMode = true;
 		$('#container').fadeIn();
-		$('#restoreData #userName').text(data.facebookName);
-		$('#restoreData #userTime').text(formatTime(data.timeStamp));
+		$('#userName').text(data.facebookName+'\'s');
+		$('#userTime').text('Made on ' + formatTime(data.timeStamp));
 		$('#userImage').attr('src', 'http://graph.facebook.com/v2.0/'+window.location.hash.substring(1)+'/picture?height=170&type=normal&width=170').show();;
-		
-		$('#restoreData').fadeIn();
 	});	
 } else {
 	readOnlyMode = false;

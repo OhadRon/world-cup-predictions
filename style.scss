@@ -1,9 +1,12 @@
 body{
 	font-family: 'Roboto Slab', Helvetica;
 	background-color: #f1f1f1;
+	border-top: 10px solid #D8D8D8;
+	padding: 0px;
+	margin: 0px;
 }
 
-$titleGreen: #5CA850;
+$titleGreen: #74D066;
 
 $avenirs: "Avenir Next", "Montserrat", Helvetica;
 
@@ -15,40 +18,80 @@ $avenirs: "Avenir Next", "Montserrat", Helvetica;
 	display: none;
 }
 
-h1{
-	text-align: center;
-	font-family: $avenirs;
-	text-transform: uppercase;
-	font-weight: bold;
-	letter-spacing: 0.4em;
-	font-size: 23px;
-	color: $titleGreen;
-	margin-bottom: 50px;
-}
+#titlearea{
 
-#restoreData{
-	text-align: center;
-	display: none;
-	margin: 20px 0px;
-	font-size: 20px;
+	padding-left: 40px;
 
-	& img{
-		border-radius: 140px;
-		border: 4px solid rgba(0,0,0,0.4);
+	#userImage{
+		background-color: #dcdcdc;
+		border-radius: 120px;
+		border: 4px solid #dcdcdc;
 		margin: 20px 0px;
+		padding: 0px;
+		width: 200px;
+		height: 200px;
+		float: left;
 	}
+
+	#centralHeader{
+		width: 500px;
+		height: 140px;
+		position: relative;
+		float: left;
+		margin-top: 40px;
+		margin-left: 60px;
+		padding-left: 60px;
+		border-left: 1px solid #dcdcdc;
+
+		#userName{
+			font-family: $avenirs;
+			font-weight: bold;
+			font-size: 26px;
+			color: #494949;
+			min-height: 26px;
+		}
+
+		#mainTitle{
+			text-align: left;
+			font-family: $avenirs;
+			text-transform: uppercase;
+			font-weight: bold;
+			letter-spacing: 4px;
+			font-size: 26px;
+			color: $titleGreen;
+		}	
+
+		#userTime{
+			font-size: 14px;
+			color: #B6B6B6;
+		}
+	}
+
+	#tryButton{
+		position: absolute;
+		right: 10px;
+		top: 50px;
+		text-align: center;
+		width: 200px;
+		height: 50px;
+		line-height: 50px;
+		background-color: $titleGreen;
+	}
+	
 }
+
 
 .stage{
 	margin-bottom: 10px;
 	text-align: center;
 
 	&>.title{
-		font-size: 36px;
-		color: #494949;
+
+		font-size: 26px;
+		color: #575757;
 		font-family: $avenirs;
 		font-weight: bold;
-		letter-spacing: 21px;
+		letter-spacing: 15px;
 		margin: 30px auto;
 		text-transform: uppercase;
 
@@ -57,7 +100,7 @@ h1{
 		width: 100%;
 
 		&:before, &:after {
-			border-top: 8px solid $titleGreen;
+			border-top: 1px solid #dcdcdc;
 			content: ' ';
 			display: table-cell;
 			position: relative;
@@ -72,21 +115,37 @@ h1{
 	&>.match, & .group{
 		
 		display: inline-block;
-		margin: 5px;
-		// border-radius: 22px;
-		background-color: rgba(215,215,215,0.31);
-		padding: 25px;
+		margin: 20px 5px;
+		padding: 0px 25px;
+		position: relative;
+
+		&:after{
+			background-color: #dcdcdc;
+			content: '';
+			width: 1;
+			height: 100%;
+			position: absolute;
+			right: -7px;
+			top: 0px;
+		}
+
+		&.norightbar:after{
+			display: none;
+		}
 		
 		& .description{
+			font-family: $avenirs;
 			font-size: 14px;
-			color: #828282;
+			color: #BEBEBE;
 			font-weight: bold;
-			margin-bottom: 15px;
+			margin-bottom: 20px;
+			text-transform: uppercase;
 		}
 
 		& .title{
-			font-size: 15px;
-			color: #828282;
+			font-family: $avenirs;
+			font-size: 16px;
+			color: #BEBEBE;
 			font-weight: bold;
 			margin-bottom: 20px;
 			text-transform: uppercase;
@@ -148,7 +207,7 @@ h1{
 				height: 35px;
 				top: 10px;
 				border-radius: 12px;
-				background-color: #676767;
+				background-color: #A9A9A9;
 				box-shadow: inset 0px 4px 0px 0px rgba(0,0,0,0.2);
 				transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 			}
@@ -231,13 +290,7 @@ button{
 	font-size: 20px;
 }
 
-#bottomBanner{
-	font-size: 30px;
-	text-align: center;
-	margin: 30 0;
-}
-
-#clearAll,#submit, #shareGuide, #bottomBanner{
+#clearAll,#submit, #shareGuide{
 	display: none;
 }
 
@@ -257,13 +310,20 @@ input#urlresult{
 
 
 #footer{
-	font-family: $avenirs;
+	background-color: #D8D8D8;
 	text-align: center;
 	font-size: 12px;
-	margin-top: 20px;
-	margin-bottom: 30px;
+	margin-top: 60px;
+	padding-top: 14px;
+	height: 200px;
+	color: #909090;
 }
 
 a, a:visited, a:active,  a:hover{
 	color: #444;
+}
+
+div::selection {
+	background-color: #74D066;
+	color: #333;
 }
