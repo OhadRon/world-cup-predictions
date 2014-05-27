@@ -208,6 +208,10 @@ $('#facebook-login').on('click',function(){
 	});
 });
 
+$('#tryButton').on('click',function(){
+	window.location.replace("/");
+});
+
 function readItem(id, callback){
 	firebaseList.child('public').child(id).once('value', function(snapshot) {
 		callback(snapshot.val());
@@ -231,13 +235,14 @@ if(window.location.hash) {
 		$('#utils').hide();
 		readOnlyMode = true;
 		$('#container').fadeIn();
-		$('#userName').text(data.facebookName+'\'s');
+		$('#userName').text(data.facebookName);
 		$('#userTime').text('Made on ' + formatTime(data.timeStamp));
 		$('#userImage img').attr('src', 'http://graph.facebook.com/v2.0/'+window.location.hash.substring(1)+'/picture?height=170&type=normal&width=170').show();;
 	});	
 } else {
 	readOnlyMode = false;
 	if (!(localStorage.data == undefined)) loadFromStorage(localStorage.data);
+	$('#tryButton').hide();
 	$('#loader').fadeOut();
 	$('#container').fadeIn();
 	$('#clearAll').fadeIn();
