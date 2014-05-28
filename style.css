@@ -63,16 +63,27 @@ body {
     #titlearea #centralHeader #userTime {
       font-size: 15px;
       color: #488e3d; }
-  #titlearea #tryButton {
+  #titlearea a#tryButton {
+    display: block;
     position: absolute;
     right: 10px;
     top: 50px;
     text-align: center;
-    width: 200px;
-    height: 50px;
-    line-height: 50px;
-    background-color: #74d066;
-    cursor: pointer; }
+    line-height: 49px;
+    background-color: #FFAA7E;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 34px;
+    font-family: "Montserrat", Helvetica;
+    font-size: 20px;
+    color: #FFFFFF;
+    width: 225px;
+    height: 49px;
+    text-transform: uppercase;
+    box-shadow: 0px 5px 0px 0px #DE6B6B,  0px 10px 0px 0px #55B347;
+    text-decoration: none; }
+    #titlearea a#tryButton:hover, #titlearea a#tryButton:active, #titlearea a#tryButton:visited {
+      color: #fff; }
 
 .stage {
   margin-bottom: 10px;
