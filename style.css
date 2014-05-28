@@ -179,6 +179,24 @@ body {
         color: #f4f4f4;
         text-shadow: rgba(0, 0, 0, 0.3) -1px -1px 0px;
         background-color: #3e9d30; }
+      .stage > .match .team.selected .inner:after, .stage > .match .team.runner-up .inner:after, .stage .group .team.selected .inner:after, .stage .group .team.runner-up .inner:after {
+        content: '1st';
+        position: absolute;
+        text-align: right;
+        right: 8px;
+        width: 100px;
+        height: 35px;
+        line-height: 35px;
+        z-index: 5;
+        font-family: "Montserrat", Helvetica;
+        font-size: 14px;
+        text-shadow: none; }
+      .stage > .match .team.selected .inner:after, .stage .group .team.selected .inner:after {
+        content: '1st';
+        color: #399E27; }
+      .stage > .match .team.runner-up .inner:after, .stage .group .team.runner-up .inner:after {
+        content: '2nd';
+        color: #82CD76; }
       .stage > .match .team.empty .inner, .stage .group .team.empty .inner {
         bottom: -40px;
         background-color: #aaa;

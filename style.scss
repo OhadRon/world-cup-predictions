@@ -240,6 +240,32 @@ $avenirs: "Montserrat", Helvetica;
 				background-color: #3e9d30;
 			}
 
+			// 1st and 2nd marks
+
+			&.selected .inner:after,&.runner-up .inner:after {
+				content: '1st';
+				position: absolute;
+				text-align: right;
+				right: 8px;
+				width: 100px;
+				height: 35px;
+				line-height: 35px;
+				z-index: 5;
+				font-family: $avenirs;
+				font-size: 14px;
+				text-shadow: none;
+			}
+
+			&.selected .inner:after {
+				content: '1st';				
+				color: #399E27;
+			}
+
+			&.runner-up .inner:after {
+				content: '2nd';
+				color: #82CD76;
+			}
+
 			&.empty .inner{
 				bottom: -40px;
 				background-color: #aaa;
