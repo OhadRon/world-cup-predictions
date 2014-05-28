@@ -231,7 +231,8 @@ if(window.location.hash) {
 			window.location.replace("/");
 		}
 		loadFromStorage(data.userGuess);
-		$('#loader').fadeOut();
+		$('#loader').slideUp();
+		$('#footer').show();
 		$('#utils').hide();
 		readOnlyMode = true;
 		$('#container').fadeIn();
