@@ -170,7 +170,7 @@ var auth = new FirebaseSimpleLogin(firebaseRoot, function(error, user) {
 	if(user){
 		console.log('login succesful', user);
 		userData = user;
-		$('#submit').fadeIn();
+		$('#submit').fadeIn().css('display','inline-block');
 		$('#facebook-login').text('Logged in as '+userData.displayName);		
 	}
 });
@@ -246,7 +246,7 @@ if(window.location.hash) {
 	$('#tryButton').hide();
 	$('#loader').fadeOut();
 	$('#container').fadeIn();
-	$('#clearAll').fadeIn();
+	$('#clearAll').fadeIn().css('display','inline-block');
 }
 
 function formatTime(stamp){

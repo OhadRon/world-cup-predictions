@@ -231,7 +231,9 @@ body {
   font-weight: bold;
   font-size: 17px;
   color: #FFC47A;
-  line-height: 47px;
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 0px;
+  line-height: 48px;
+  margin: 10px;
   padding: 0px 20px;
   border-radius: 25px;
   text-transform: uppercase;
