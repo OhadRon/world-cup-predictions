@@ -6,8 +6,6 @@ body{
 	margin: 0px;
 }
 
-$titleGreen: #74D066;
-
 $avenirs: "Montserrat", Helvetica;
 
 #container{
@@ -164,15 +162,18 @@ $avenirs: "Montserrat", Helvetica;
 			text-transform: uppercase;
 		}
 
+		$buttonWidth: 180;
+		$buttonHeight: 30;
+
 		& .team{
-			width: 210px;
-			height: 45px;
-			margin-bottom: 15px;
+			width: $buttonWidth;
+			height: $buttonHeight+10;
+			margin-bottom: 10px;
 			cursor: pointer;
-			font-size: 16px;
+			font-size: 14px;
 			font-weight: 300;
 			overflow: hidden;
-			border-radius: 13px;
+			border-radius: 10px;
 			-webkit-user-select: none;
 			box-shadow: 0px 6px 0px 0px #55b347;
 			transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -218,24 +219,24 @@ $avenirs: "Montserrat", Helvetica;
 			&:before{ // the element background (shows up when empty)
 				position: absolute;
 				content: ' ';
-				width: 210px;
-				height: 35px;
+				width: $buttonWidth;
+				height: $buttonHeight;
 				top: 10px;
-				border-radius: 12px;
+				border-radius: 9px;
 				background-color: #58a24c;
-				box-shadow: inset 0px 4px 0px 0px #317a28;
+				box-shadow: inset 0px 3px 0px 0px #317a28;
 				transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 			}
 
 			& .inner{
 				color: #747474;
 				position: absolute;
-				width: 210px;
-				height: 35px;
+				width: $buttonWidth;
+				height: $buttonHeight;
 				bottom: 6px;
 				background-color: #fff;
-				border-radius: 12px;
-				line-height: 35px;
+				border-radius: 9px;
+				line-height: 30px;
 				text-align: center;
 				z-index: 3;
 				transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -274,7 +275,7 @@ $avenirs: "Montserrat", Helvetica;
 			right: 8px;
 			width: 100px;
 			height: 35px;
-			line-height: 35px;
+			line-height: 30px;
 			z-index: 5;
 			font-family: $avenirs;
 			font-size: 14px;
