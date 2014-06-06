@@ -218,34 +218,28 @@ body {
   margin: 20px;
   text-align: center; }
 
-button {
-  box-shadow: inset 0px -2px 0px 0px rgba(0, 0, 0, 0.3);
-  background-color: #ededed;
-  border-radius: 6px;
-  border: 1px solid #dcdcdc;
-  display: inline-block;
-  cursor: pointer;
-  color: #777777;
-  font-size: 15px;
-  font-family: "Montserrat", Helvetica;
-  padding: 6px 24px;
-  text-decoration: none; }
-  button:hover {
-    background-color: #dfdfdf; }
-  button:active {
-    position: relative;
-    top: 1px; }
-  button#facebook-login {
-    color: #eee;
-    background-color: #425f9f; }
-  button:focus {
-    outline: none; }
-
 #shareGuide {
   font-size: 20px; }
 
-#clearAll, #submit, #shareGuide, #footer {
+#clearAll, #submit, #shareGuide {
   display: none; }
+
+.utilButton {
+  display: inline-block;
+  cursor: pointer;
+  font-family: "Montserrat", Helvetica;
+  font-weight: bold;
+  font-size: 17px;
+  color: #FFC47A;
+  line-height: 47px;
+  padding: 0px 20px;
+  border-radius: 25px;
+  text-transform: uppercase;
+  height: 48px;
+  background-color: #fff; }
+
+#clearAll {
+  color: #FFC47A; }
 
 input#urlresult {
   width: 750px;

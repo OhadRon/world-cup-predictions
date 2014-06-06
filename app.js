@@ -192,7 +192,7 @@ $('#submit').on('click', function(){
 	pushRef.set(submission);
 	firebaseList.child('private').child(userData.id).set(privatePart);
 	$('#shareGuide').fadeIn();
-	$('button').slideUp();
+	$('.utilButton').slideUp();
 	$('#urlresult').val(window.location.origin+window.location.pathname+'#'+pushRef.name());
 	readOnlyMode = true;
 });
