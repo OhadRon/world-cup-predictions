@@ -176,6 +176,7 @@ var auth = new FirebaseSimpleLogin(firebaseRoot, function(error, user) {
 		$('#submit').fadeIn().css('display','inline-block');
 		$('#facebook-login').text('Logged in as '+userData.displayName);
 		$('#userImage').removeClass('empty');
+		$('#userName').text(userData.displayName+"'s");
 		$('#userImage img').attr('src', 'http://graph.facebook.com/v2.0/'+userData.id+'/picture?height=170&type=normal&width=170').show();
 	}
 });

@@ -139,9 +139,8 @@ $avenirs: "Montserrat", Helvetica;
 	#tutorial{
 		font-size: 12px;
 		color: #488e3d;
-		left: 121px;
-		position: relative;
-		width: 800px;
+		width: 500px;
+		margin-top: 10px;
 
 		a{
 			color: #488e3d;
@@ -201,6 +200,7 @@ $avenirs: "Montserrat", Helvetica;
 		& .team{
 			width: $buttonWidth;
 			height: $buttonHeight+10;
+			margin: 0 auto;
 			margin-bottom: 10px;
 			cursor: pointer;
 			font-size: 14px;
@@ -299,6 +299,9 @@ $avenirs: "Montserrat", Helvetica;
 	// 1st and 2nd marks
 
 	& .group {
+
+		padding: 20px 30px;
+
 		.selected .inner:after, .runner-up .inner:after {
 			content: '1st';
 			position: absolute;
