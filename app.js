@@ -124,7 +124,10 @@ $('.group .team').on('click', function(){
 		if($(this).hasClass('selected') || $(this).hasClass('runner-up')){
 			$(this).removeClass('selected').removeClass('runner-up');
 
-			$('.match').find('[data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').find('.inner').text('');
+			var thisTeam = 	$('.match').find('[data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected');
+
+			setTimeout(function(){ thisTeam.find('.inner').text('') },200);
+
 		} else if($(this).siblings('.selected,.runner-up').length<2){
 			if($(this).siblings('.selected').length>0 ){
 				$(this).addClass('runner-up');

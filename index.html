@@ -16,12 +16,19 @@
 	<!-- Facebook opengraph tags -->
 	<meta property="og:title" content="Your World Cup Guess!" />
 	<meta property="og:url" content="http://beanoctopus.com/" />
+	<meta property="og:image" content="http://beanoctopus.com/facebook-image.png" />
 	<meta property="og:description" content="Go see your friend's guess of the World Cup results. You can also try yourself!" />
 	<meta property="fb:app_id" content="706931822712939" />
 
 </head>
 <body>
-	<div id="loader"> LOADING <div class="spinner"></div> </div>
+	<div id="loader">
+		<div class="spinner">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+	</div>
 	<div id="container">
 		<div id="titlearea">
 			<div id="userImage" class="empty"><img></div>
@@ -31,7 +38,7 @@
 				<div id="userTime">Guess who will win and share with your friends</div>
 			</div>
 			<a href="/" id="tryButton">Try yours now</a>
-			<div id="tutorial">Choose the winners and runner-ups in the group stage, and the winners in the knockout stage. You can then share your guesses with your friends and prove you are at least as good as <a href="http://en.wikipedia.org/wiki/Paul_the_Octopus">Paul the octopus</a>.</div>
+			<div id="tutorial">Choose the winners and runner-ups in the group stage, and the winners in the knockout stage. Share your guesses with your friends and prove you are at least as good as <a href="http://en.wikipedia.org/wiki/Paul_the_Octopus">Paul the octopus</a>.</div>
 		</div>
 		<div class="stage" data-stage="groups">
 			<div class="title">Groups Stage</div>
@@ -73,7 +80,7 @@
 			<div class="group" data-group="F" data-winner="16.7" data-runnerup="16.3">
 				<div class="title">Group F</div>
 				<div class="team" data-team="2"><div class="inner">Argentina</div></div>
-				<div class="team" data-team="5"><div class="inner">Bosnia and Herzegovina</div></div>
+				<div class="team" data-team="5"><div class="inner">Bosnia & Herzegovina</div></div>
 				<div class="team" data-team="19"><div class="inner">Iran</div></div>
 				<div class="team" data-team="25"><div class="inner">Nigeria</div></div>
 			</div>
