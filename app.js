@@ -168,18 +168,7 @@ $('#clearAll').on('click',function(){
 
 var firebaseRoot = new Firebase('https://sizzling-fire-7955.firebaseIO.com/');
 var firebaseList = firebaseRoot.child('submissionList');
-var auth = new FirebaseSimpleLogin(firebaseRoot, function(error, user) {
-	console.log('trying to log in');
-	if(user){
-		console.log('login succesful', user);
-		userData = user;
-		$('#submit').fadeIn().css('display','inline-block');
-		$('#facebook-login').text('Logged in as '+userData.displayName);
-		$('#userImage').removeClass('empty');
-		$('#userName').text(userData.displayName+"'s");
-		$('#userImage img').attr('src', 'http://graph.facebook.com/v2.0/'+userData.id+'/picture?height=170&type=normal&width=170').show();
-	}
-});
+
 
 var userData;
 
@@ -231,6 +220,9 @@ if(window.location.hash) {
 	remoteVersion = true;
 	console.log('Loading', window.location.hash.substring(1));
 
+	$('#userImage img').attr('src', 'http://graph.facebook.com/v2.0/'+window.location.hash.substring(1)+'/picture?height=170&type=normal&width=170').show();
+	$('#userImage').removeClass('empty');
+	
 	readItem(window.location.hash.substring(1), function(data){
 		console.log('Remote data retrieved: ',data);
 		if (data == null){ // no such share ID
@@ -245,10 +237,24 @@ if(window.location.hash) {
 		$('#container').fadeIn();
 		$('#userName').text(data.facebookName+'\'s');
 		$('#userTime').text('Made on ' + formatTime(data.timeStamp));
-		$('#userImage img').attr('src', 'http://graph.facebook.com/v2.0/'+window.location.hash.substring(1)+'/picture?height=170&type=normal&width=170').show();
-		$('#userImage').removeClass('empty');
+
 	});	
 } else {
+
+	var auth = new FirebaseSimpleLogin(firebaseRoot, function(error, user) {
+		console.log('trying to log in');
+		if(user){
+			console.log('login succesful', user);
+			userData = user;
+			$('#submit').fadeIn().css('display','inline-block');
+			$('#facebook-login').text('Logged in as '+userData.displayName);
+			$('#userImage').removeClass('empty');
+			$('#userName').text(userData.displayName+"'s");
+			$('#userImage img').attr('src', 'http://graph.facebook.com/v2.0/'+userData.id+'/picture?height=170&type=normal&width=170').show();
+		}
+	});
+
+
 	readOnlyMode = false;
 	if (!(localStorage.data == undefined)) loadFromStorage(localStorage.data);
 	$('#tryButton').hide();
