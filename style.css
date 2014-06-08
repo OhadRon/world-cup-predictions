@@ -19,7 +19,8 @@ body {
   text-align: center; }
 
 #titlearea {
-  padding-left: 40px; }
+  padding-left: 40px;
+  margin-bottom: 50px; }
   #titlearea #userImage {
     background-color: #dcdcdc;
     border-radius: 120px;
@@ -34,6 +35,17 @@ body {
     #titlearea #userImage img {
       width: 200px;
       height: 200px; }
+    #titlearea #userImage.empty {
+      background-color: #415F9D;
+      cursor: pointer;
+      color: #eee;
+      font-size: 12px; }
+      #titlearea #userImage.empty:after {
+        display: block;
+        position: relative;
+        top: -110px;
+        left: 16px;
+        content: 'Log in with Facebook to share'; }
   #titlearea #centralHeader {
     width: 700px;
     height: 160px;
@@ -84,6 +96,14 @@ body {
     text-decoration: none; }
     #titlearea a#tryButton:hover, #titlearea a#tryButton:active, #titlearea a#tryButton:visited {
       color: #fff; }
+  #titlearea #tutorial {
+    font-size: 15px;
+    color: #27511f;
+    left: 121px;
+    position: relative;
+    width: 800px; }
+    #titlearea #tutorial a {
+      color: fff; }
 
 .stage {
   margin-bottom: 10px;

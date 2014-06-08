@@ -171,7 +171,9 @@ var auth = new FirebaseSimpleLogin(firebaseRoot, function(error, user) {
 		console.log('login succesful', user);
 		userData = user;
 		$('#submit').fadeIn().css('display','inline-block');
-		$('#facebook-login').text('Logged in as '+userData.displayName);		
+		$('#facebook-login').text('Logged in as '+userData.displayName);
+		$('#userImage').removeClass('empty');
+		$('#userImage img').attr('src', 'http://graph.facebook.com/v2.0/'+userData.id+'/picture?height=170&type=normal&width=170').show();
 	}
 });
 
@@ -201,7 +203,7 @@ $('#urlresult').on('focus',function(){
 	$(this).select();
 }).mouseup(function(e) { return false; });;
 
-$('#facebook-login').on('click',function(){
+$('#facebook-login, #userImage.empty').on('click',function(){
 	auth.login('facebook', {
 		rememberMe: true,
 		scope: 'email'
