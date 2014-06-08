@@ -236,6 +236,7 @@ if(window.location.hash) {
 		$('#loader').slideUp();
 		$('#footer').show();
 		$('#utils').hide();
+		$('#tutorial').hide();
 		readOnlyMode = true;
 		$('#container').fadeIn();
 		$('#userName').text(data.facebookName+'\'s');
