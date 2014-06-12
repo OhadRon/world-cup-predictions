@@ -124,7 +124,10 @@ $('.group .team').on('click', function(){
 		if($(this).hasClass('selected') || $(this).hasClass('runner-up')){
 			$(this).removeClass('selected').removeClass('runner-up');
 
-			$('.match').find('[data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected').find('.inner').text('');
+			var thisTeam = 	$('.match').find('[data-team="'+$(this).attr('data-team')+'"]').addClass('empty').attr('data-team','').removeClass('selected');
+
+			setTimeout(function(){ thisTeam.find('.inner').text('') },200);
+
 		} else if($(this).siblings('.selected,.runner-up').length<2){
 			if($(this).siblings('.selected').length>0 ){
 				$(this).addClass('runner-up');
@@ -165,15 +168,7 @@ $('#clearAll').on('click',function(){
 
 var firebaseRoot = new Firebase('https://sizzling-fire-7955.firebaseIO.com/');
 var firebaseList = firebaseRoot.child('submissionList');
-var auth = new FirebaseSimpleLogin(firebaseRoot, function(error, user) {
-	console.log('trying to log in');
-	if(user){
-		console.log('login succesful', user);
-		userData = user;
-		$('#submit').fadeIn();
-		$('#facebook-login').text('Logged in as '+userData.displayName);		
-	}
-});
+
 
 var userData;
 
@@ -192,7 +187,7 @@ $('#submit').on('click', function(){
 	pushRef.set(submission);
 	firebaseList.child('private').child(userData.id).set(privatePart);
 	$('#shareGuide').fadeIn();
-	$('button').slideUp();
+	$('.utilButton').slideUp();
 	$('#urlresult').val(window.location.origin+window.location.pathname+'#'+pushRef.name());
 	readOnlyMode = true;
 });
@@ -201,11 +196,15 @@ $('#urlresult').on('focus',function(){
 	$(this).select();
 }).mouseup(function(e) { return false; });;
 
-$('#facebook-login').on('click',function(){
+$('#facebook-login, #userImage.empty').on('click',function(){
 	auth.login('facebook', {
 		rememberMe: true,
 		scope: 'email'
 	});
+});
+
+$('#tryButton').on('click',function(){
+	window.location.replace("/");
 });
 
 function readItem(id, callback){
@@ -221,29 +220,47 @@ if(window.location.hash) {
 	remoteVersion = true;
 	console.log('Loading', window.location.hash.substring(1));
 
+	$('#userImage img').attr('src', 'http://graph.facebook.com/v2.0/'+window.location.hash.substring(1)+'/picture?height=170&type=normal&width=170').show();
+	$('#userImage').removeClass('empty');
+	
 	readItem(window.location.hash.substring(1), function(data){
 		console.log('Remote data retrieved: ',data);
 		if (data == null){ // no such share ID
 			window.location.replace("/");
 		}
 		loadFromStorage(data.userGuess);
-		$('#loader').fadeOut();
+		$('#loader').slideUp();
+		$('#footer').show();
 		$('#utils').hide();
-		$('#bottomBanner').show();
+		$('#tutorial').hide();
 		readOnlyMode = true;
 		$('#container').fadeIn();
-		$('#restoreData #userName').text(data.facebookName);
-		$('#restoreData #userTime').text(formatTime(data.timeStamp));
-		$('#userImage').attr('src', 'http://graph.facebook.com/v2.0/'+window.location.hash.substring(1)+'/picture?height=170&type=normal&width=170').show();;
-		
-		$('#restoreData').fadeIn();
+		$('#userName').text(data.facebookName+'\'s');
+		$('#userTime').text('Made on ' + formatTime(data.timeStamp));
+
 	});	
 } else {
+
+	var auth = new FirebaseSimpleLogin(firebaseRoot, function(error, user) {
+		console.log('trying to log in');
+		if(user){
+			console.log('login succesful', user);
+			userData = user;
+			$('#submit').fadeIn().css('display','inline-block');
+			$('#facebook-login').text('Logged in as '+userData.displayName);
+			$('#userImage').removeClass('empty');
+			$('#userName').text(userData.displayName+"'s");
+			$('#userImage img').attr('src', 'http://graph.facebook.com/v2.0/'+userData.id+'/picture?height=170&type=normal&width=170').show();
+		}
+	});
+
+
 	readOnlyMode = false;
 	if (!(localStorage.data == undefined)) loadFromStorage(localStorage.data);
+	$('#tryButton').hide();
 	$('#loader').fadeOut();
 	$('#container').fadeIn();
-	$('#clearAll').fadeIn();
+	$('#clearAll').fadeIn().css('display','inline-block');
 }
 
 function formatTime(stamp){

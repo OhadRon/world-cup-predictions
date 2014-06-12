@@ -1,25 +1,55 @@
 <html>
 <head>
 	<link rel="stylesheet" href="style.css">
+	<!-- Fonts -->
+
+	<link rel="icon" href="favicon.png">
 	<link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,300' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Alfa+Slab+One' rel='stylesheet' type='text/css'>
+
+	<!-- Scripts -->
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script type='text/javascript' src='https://cdn.firebase.com/js/client/1.0.15/firebase.js'></script>
 	<script type='text/javascript' src='https://cdn.firebase.com/js/simple-login/1.4.1/firebase-simple-login.js'></script>
 
-	<title>World Cup 2014 - Guesses</title>
+	<title>World Cup 2014 - Be an Octopus</title>
 
+	<!-- Facebook opengraph tags -->
 	<meta property="og:title" content="Your World Cup Guess!" />
-	<meta property="og:url" content="http://ohadron.com/worldcup/" />
+	<meta property="og:url" content="http://beanoctopus.com/" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="http://beanoctopus.com/facebook-image4.png" />
 	<meta property="og:description" content="Go see your friend's guess of the World Cup results. You can also try yourself!" />
 	<meta property="fb:app_id" content="706931822712939" />
 
 </head>
 <body>
-	<div id="loader"> LOADING </div>
+	<div id="social">
+		<iframe src="//www.facebook.com/plugins/like.php?href=http://beanoctopus.com/&amp;width&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;share=false&amp;height=21" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width: 50px; height:21px;" allowTransparency="true"></iframe>
+
+		<a href="https://twitter.com/share?url=http://beanoctopus.com&text=Be a smart octopus and guess who will win the world cup!" class="twitter-share-button" data-lang="en">Tweet</a>
+		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+	</div>
+	<div id="loader">
+		<div class="spinner">
+			<div class="bounce1"></div>
+			<div class="bounce2"></div>
+			<div class="bounce3"></div>
+		</div>
+	</div>
 	<div id="container">
-		<h1>2104 World Cup Guess</h1>
-		<div id="restoreData">These are <span id="userName"></span>'s predictions, as of <span id="userTime"></span><br><img id="userImage" style="display:none;"><br><a href="/">Try your own!</a></div>
+		<div id="titlearea">
+			<div id="userImage" class="empty"><img></div>
+			<div id="centralHeader">
+				<div id="userName">Be An Octopus</div>
+				<div id="mainTitle">2014 World Cup Guesses</div>
+				<div id="userTime">Guess who will win and share with your friends</div>
+				<div id="tutorial">Choose the winners and runner-ups in the group stage, and the winners in the knockout stage. Share your guesses with your friends and prove that you are at least as good as <a href="http://en.wikipedia.org/wiki/Paul_the_Octopus">Paul the octopus</a>.</div>
+			</div>
+			<a href="/" id="tryButton">Try yours now</a>
+		</div>
 		<div class="stage" data-stage="groups">
 			<div class="title">Groups Stage</div>
 
@@ -43,7 +73,7 @@
 				<div class="team" data-team="17"><div class="inner">Greece</div></div>
 				<div class="team" data-team="21"><div class="inner">Ivory Coast</div></div>
 				<div class="team" data-team="22"><div class="inner">Japan</div></div></div>
-			<div class="group" data-group="D" data-winner="16.6" data-runnerup="16.2">
+			<div class="group norightbar" data-group="D" data-winner="16.6" data-runnerup="16.2">
 				<div class="title">Group D</div>
 				<div class="team" data-team="10"><div class="inner">Costa Rica</div></div>
 				<div class="team" data-team="13"><div class="inner">England</div></div>
@@ -60,7 +90,7 @@
 			<div class="group" data-group="F" data-winner="16.7" data-runnerup="16.3">
 				<div class="title">Group F</div>
 				<div class="team" data-team="2"><div class="inner">Argentina</div></div>
-				<div class="team" data-team="5"><div class="inner">Bosnia and Herzegovina</div></div>
+				<div class="team" data-team="5"><div class="inner">Bosnia & Herzegovina</div></div>
 				<div class="team" data-team="19"><div class="inner">Iran</div></div>
 				<div class="team" data-team="25"><div class="inner">Nigeria</div></div>
 			</div>
@@ -71,7 +101,7 @@
 				<div class="team" data-team="26"><div class="inner">Portugal</div></div>
 				<div class="team" data-team="31"><div class="inner">United States</div></div>
 			</div>
-			<div class="group" data-group="H" data-winner="16.8" data-runnerup="16.4">
+			<div class="group norightbar" data-group="H" data-winner="16.8" data-runnerup="16.4">
 				<div class="title">Group H</div>
 				<div class="team" data-team="1"><div class="inner">Algeria</div></div>
 				<div class="team" data-team="4"><div class="inner">Belgium</div></div>
@@ -97,7 +127,7 @@
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
 			</div>
-			<div class="match" data-id="4" data-winner="8.2">
+			<div class="match norightbar" data-id="4" data-winner="8.2">
 				<div class="description">G winner vs H runner-up</div>
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
@@ -117,7 +147,7 @@
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
 			</div>
-			<div class="match" data-id="8" data-winner="8.4">
+			<div class="match norightbar" data-id="8" data-winner="8.4">
 				<div class="description">H winner vs G runner-up</div>
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
@@ -140,7 +170,7 @@
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
 			</div>
-			<div class="match" data-id="4" data-winner="4.2">
+			<div class="match norightbar" data-id="4" data-winner="4.2">
 				<div class="description"></div>
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
@@ -153,7 +183,7 @@
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
 			</div>
-			<div class="match" data-id="2" data-winner="2.1" data-loser="3.1">
+			<div class="match norightbar" data-id="2" data-winner="2.1" data-loser="3.1">
 				<div class="description"></div>
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
@@ -161,7 +191,7 @@
 		</div>
 		<div class="stage" data-stage="3">
 			<div class="title">Third Place</div>
-			<div class="match" data-id="1">
+			<div class="match norightbar" data-id="1">
 				<div class="description"></div>
 				<div class="team empty"><div class="inner"></div></div>
 				<div class="team empty"><div class="inner"></div></div>
@@ -169,31 +199,40 @@
 		</div>
 		<div class="stage" data-stage="2">
 			<div class="title">Final</div>
-			<div class="match" data-id="1">
+			<div class="match norightbar" data-id="1">
 				<div class="description"></div>
-				<div class="team empty"><div class="inner"></div></div>
-				<div class="team empty"><div class="inner"></div></div>
+				<div class="team empty final"><div class="inner"></div></div>
+				<div class="team empty final"><div class="inner"></div></div>
 			</div>
 		</div>
 
+	</div>
+
+	<div id="footer">
 		<div id="utils">
-			<button id="clearAll">Clear all selections and start over</button>
-			<button id="facebook-login">Login with Facebook so you can share this</button>
-			<button id="submit">Save and Share</button>
+			<div class="utilButton" id="clearAll">Clear all selections and start over</div class="utilButton">
+			<div class="utilButton" id="facebook-login">Login with Facebook so you can share this</div class="utilButton">
+			<div class="utilButton" id="submit">Save and Share</div class="utilButton">
 			<div id="shareGuide">
 				Selection saved! You can now share your guess with your friends. Just post this link anywhere:
-				<input type="text" id="urlresult">
+				<br><input type="text" id="urlresult">
 			</div>
 		</div>
-		<div id="bottomBanner">
-			<a href="/">Think you know better? Try your own guess!</a>
-		</div>
-		<div id="footer">
-			Made in Tel Aviv by <a href="http://eladtayar.com">Elad</a> and <a href="http://ohadron.com">Ohad</a>
-		</div>		
-	</div>
+		Made in Tel Aviv by <a href="http://eladtayar.com">Elad</a> and <a href="http://ohadron.com">Ohad</a>
+	</div>		
+
 <script src="data.js"></script>
 <script src="app.js"></script>
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-51739755-1', 'beanoctopus.com');
+  ga('send', 'pageview');
+
+</script>
 </body>
 </html>
